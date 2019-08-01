@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1499986640 source:c:\users\gabriel\desktop\programaçao\tad_fila_dinamica\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+

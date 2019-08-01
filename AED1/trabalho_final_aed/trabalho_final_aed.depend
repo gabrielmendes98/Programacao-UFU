@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1500238954 source:c:\users\gabriel\desktop\programaçao\trabalho_final_aed\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
+1500238971 c:\users\gabriel\desktop\programaçao\trabalho_final_aed\lista.h
+
+1500387602 source:c:\users\gabriel\desktop\programaçao\trabalho_final_aed\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"lista.h"
+	"jogo.h"
+	"fila_jogadores.h"
+	"pilha.h"
+
+1500321945 source:c:\users\gabriel\desktop\programaçao\trabalho_final_aed\jogo.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+	"jogo.h"
+	"pilha.h"
+	"fila_jogadores.h"
+
+1500234342 c:\users\gabriel\desktop\programaçao\trabalho_final_aed\jogo.h
+	"pilha.h"
+	"fila_jogadores.h"
+	"lista.h"
+
+1500322094 source:c:\users\gabriel\desktop\programaçao\trabalho_final_aed\fila_jogadores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"fila_jogadores.h"
+
+1500322100 c:\users\gabriel\desktop\programaçao\trabalho_final_aed\fila_jogadores.h
+
+1500046213 c:\users\gabriel\desktop\programaçao\trabalho_final_aed\pilha.h
+
+1500046348 source:c:\users\gabriel\desktop\programaçao\trabalho_final_aed\pilha.c
+	<stdio.h>
+	<stdlib.h>
+	"pilha.h"
+

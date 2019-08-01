@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1493765093 source:c:\users\gabriel\desktop\programaçao\aed1_ap3\listaarray.c
+	<sys/time.h>
+	<stdio.h>
+	<stdlib.h>
+	"listaArray.h"
+
+1493765984 c:\users\gabriel\desktop\programaçao\aed1_ap3\listaarray.h
+	<sys/time.h>
+	<stdio.h>
+	<stdlib.h>
+
+1493765887 source:c:\users\gabriel\desktop\programaçao\aed1_ap3\main.c
+	<sys/time.h>
+	<stdio.h>
+	<stdlib.h>
+	"listaArray.h"
+

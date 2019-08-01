@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1498606740 source:c:\users\gabriel\desktop\programaçao\aed1_ap9\filaprioridadeingenua.c
+	<stdio.h>
+	<stdlib.h>
+	"FilaPrioridadeIngenua.h"
+
+1498607254 source:c:\users\gabriel\desktop\programaçao\aed1_ap9\main.c
+	<stdio.h>
+	<stdlib.h>
+	"FilaPrioridadeIngenua.h"
+
+1498605600 c:\users\gabriel\desktop\programaçao\aed1_ap9\filaprioridadeingenua.h
+
+1498606740 source:c:\users\gabriel\desktop\programaçao\aed1_ap9_part1\filaprioridadeingenua.c
+	<stdio.h>
+	<stdlib.h>
+	"FilaPrioridadeIngenua.h"
+
+1498613360 c:\users\gabriel\desktop\programaçao\aed1_ap9_part1\filaprioridadeingenua.h
+
+1498614113 source:c:\users\gabriel\desktop\programaçao\aed1_ap9_part1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"FilaPrioridadeIngenua.h"
+

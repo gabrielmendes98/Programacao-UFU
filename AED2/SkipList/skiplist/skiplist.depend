@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1559844711 source:c:\users\vinicius\desktop\skiplist\main.c
+	<stdio.h>
+	<stdlib.h>
+	"SkipList.h"
+
+1559843052 c:\users\vinicius\desktop\skiplist\skiplist.h
+
+1559844420 source:c:\users\vinicius\desktop\skiplist\skiplist.c
+	<stdio.h>
+	<stdlib.h>
+	"SkipList.h"
+
+1559927638 source:e:\skiplist\main.c
+	<stdio.h>
+	<stdlib.h>
+	"SkipList.h"
+
+1559925022 e:\skiplist\skiplist.h
+
+1559927632 source:e:\skiplist\skiplist.c
+	<stdio.h>
+	<stdlib.h>
+	"SkipList.h"
+	<math.h>
+
+1560173383 source:c:\users\gabriel\desktop\skiplist\main.c
+	<stdio.h>
+	<stdlib.h>
+	"SkipList.h"
+
+1560172441 c:\users\gabriel\desktop\skiplist\skiplist.h
+
+1560174157 source:c:\users\gabriel\desktop\skiplist\skiplist.c
+	<stdio.h>
+	<stdlib.h>
+	"SkipList.h"
+	<math.h>
+
+1561952847 source:c:\users\gabriel\desktop\pastas\programacao-ufu\aed2\skiplist\skiplist\main.c
+	<stdio.h>
+	<stdlib.h>
+	"SkipList.h"
+
+1561948779 c:\users\gabriel\desktop\pastas\programacao-ufu\aed2\skiplist\skiplist\skiplist.h
+
+1561953049 source:c:\users\gabriel\desktop\pastas\programacao-ufu\aed2\skiplist\skiplist\skiplist.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"SkipList.h"
+

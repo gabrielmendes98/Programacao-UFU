@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1494366477 source:c:\users\gabriel\desktop\aed1\main.c
+	<sys/time.h>
+	<stdlib.h>
+	<stdio.h>
+
+1494378851 source:c:\users\gabriel\desktop\programaçao\aed1_ap4\main.c
+	<sys/time.h>
+	<stdlib.h>
+	<stdio.h>
+

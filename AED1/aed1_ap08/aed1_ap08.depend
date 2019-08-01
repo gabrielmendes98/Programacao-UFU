@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1497917302 source:c:\users\gabriel\desktop\programaçao\aed1_ap08\main.c
+	<stdio.h>
+	<stdlib.h>
+	"stack.h"
+
+1497917292 source:c:\users\gabriel\desktop\programaçao\aed1_ap08\stack.c
+	<stdio.h>
+	<stdlib.h>
+	"stack.h"
+
+1497917308 c:\users\gabriel\desktop\programaçao\aed1_ap08\stack.h
+

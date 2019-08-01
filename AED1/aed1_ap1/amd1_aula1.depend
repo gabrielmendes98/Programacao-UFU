@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1491428625 source:c:\users\gabriel\desktop\programaçao\amd1_aula1\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1498612927 source:c:\users\gabriel\desktop\programaçao\aed1_ap9_part2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"FilaPrioridadeHeap.h"
+
+1498608047 source:c:\users\gabriel\desktop\programaçao\aed1_ap9_part2\filaprioridadeheap.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"FilaPrioridadeHeap.h"
+
+1498607962 c:\users\gabriel\desktop\programaçao\aed1_ap9_part2\filaprioridadeheap.h
+

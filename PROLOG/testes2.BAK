@@ -1,0 +1,14 @@
+% Autor:
+% Data: 13/07/2017
+
+leia(Char):-
+  get(C1),
+  get(_),
+  digitado(C1,Char).
+  
+digitado(115,s).
+digitado(110,n).
+  
+nome:-
+ leia(Nome),
+ write(Nome),nl.

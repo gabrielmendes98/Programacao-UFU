@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1496802825 source:c:\users\gabriel\desktop\programaçao\aed1_exercicio_extra\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pilha.h"
+
+1496802825 c:\users\gabriel\desktop\programaçao\aed1_exercicio_extra\pilha.h
+	<stdio.h>
+	<stdlib.h>
+
+1496802825 source:c:\users\gabriel\desktop\programaçao\aed1_exercicio_extra\pilha.c
+	<stdio.h>
+	<stdlib.h>
+	"pilha.h"
+

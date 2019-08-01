@@ -1,0 +1,5 @@
+gabriel 20 1.77
+gabriella 20 1.62
+jureg 99 1.99
+teste 17 1.88
+teste 17 1.88

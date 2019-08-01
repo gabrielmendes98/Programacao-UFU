@@ -1,0 +1,14 @@
+Produto 1234 "Oleo DoBom, 1l" 195
+Produto 4756 "Chocolate Cazzeiro, 250g" 180
+Produto 3216 "Arroz DoBom, 5Kg" 213
+Produto 5823 "Balas Pedregulho, 1Kg" 379
+Produto 4719 "Queijo Mineirim, 1Kg" 449
+Produto 6832 "Iogurte Maravilha, 1Kg" 499
+Produto 1112 "Rapadura QuebraDente, 1Kg" 80
+Produto 1111 "Sal Donorte, 1Kg" 221
+Produto 1113 "Cafe DoBom, 1Kg" 285
+Produto 1115 "Biscoito Bibi, 1Kg" 80
+Produto 3814 "Sorvete QGelo, 1l" 695
+Produto 9999 "Chocolate MM, 200g" 950
+Produto 6745 "Macarrao penne, 500g" 1200
+Produto 7776 "Pizza Sadia, 500g" 1000

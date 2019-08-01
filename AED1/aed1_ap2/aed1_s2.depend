@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1492465982 source:c:\users\gabriel\desktop\programaçao\aed1_s2\agenda.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"agenda.h"
+
+1492465982 c:\users\gabriel\desktop\programaçao\aed1_s2\agenda.h
+
+1492375220 source:c:\users\gabriel\desktop\programaçao\aed1_s2\contato.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"contato.h"
+
+1492466152 source:c:\users\gabriel\desktop\programaçao\aed1_s2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"contato.h"
+	"agenda.h"
+
+1492371234 c:\users\gabriel\desktop\programaçao\aed1_s2\contato.h
+

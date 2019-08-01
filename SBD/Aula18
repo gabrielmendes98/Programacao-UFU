@@ -1,0 +1,156 @@
+CREATE SCHEMA locadora;
+
+SET search_path TO locadora;
+
+CREATE SEQUENCE sequenciacliente;
+
+CREATE SEQUENCE sequenciafilme;
+
+CREATE SEQUENCE sequenciaator;
+
+CREATE TABLE cliente (
+    numcliente     smallint     NOT NULL  PRIMARY KEY,
+    nome           varchar(50)  NOT NULL,
+    endereco       varchar(100),
+    foneres        varchar(15),
+    fonecel        varchar(15)
+);
+
+ALTER TABLE cliente ALTER COLUMN numcliente SET DEFAULT NEXTVAL('sequenciacliente');
+
+CREATE TABLE ator (
+    cod        smallint    NOT NULL PRIMARY KEY,
+    datanas        timestamp,
+    nacionalidade    varchar(30),
+    nomereal    varchar(50)    NOT NULL,
+    nomeartistico    varchar(50)
+);
+
+ALTER TABLE ator ALTER COLUMN cod SET DEFAULT NEXTVAL('sequenciaator');
+
+CREATE TABLE filme (
+    numfilme     smallint    NOT NULL PRIMARY KEY,
+    titulooriginal    varchar(50)    NOT NULL,
+    titulopt    varchar(50),
+    duracao        timestamp    NOT NULL,
+    datalancamento    timestamp    NOT NULL,
+    direcao        varchar(30),
+    categoria    varchar(30)    CONSTRAINT categorias CHECK (categoria = 'drama' OR categoria = 'romance' OR categoria = 'acao' OR categoria = 'comedia' ),
+    classificacao    smallint,
+    CONSTRAINT clafk FOREIGN KEY (classificacao) REFERENCES classificacao(cod)
+);
+
+ALTER TABLE filme ALTER COLUMN numfilme SET DEFAULT NEXTVAL('sequenciafilme');
+
+CREATE TABLE classificacao (
+    cod        smallint    NOT NULL PRIMARY KEY,
+    nome        varchar(30)  CONSTRAINT nomescla CHECK (nome = 'super lancamento' OR nome = 'lancamento' OR nome = 'acervo'),
+    preco        float        NOT NULL
+);
+
+CREATE TABLE midia (
+    numfilme    smallint    NOT NULL ,
+    numero        smallint    NOT NULL ,
+    tipo        varchar(10)    NOT NULL CONSTRAINT tipos CHECK (tipo = 'DVD' OR tipo = 'Blu-ray'),
+    CONSTRAINT    pk PRIMARY KEY (numfilme, numero, tipo),
+    CONSTRAINT numfk FOREIGN KEY (numfilme) REFERENCES filme(numfilme)
+);
+
+CREATE TABLE estrela (
+    numfilme    smallint     NOT NULL,
+    codator        smallint    NOT NULL,
+    CONSTRAINT numfk FOREIGN KEY (numfilme) REFERENCES filme(numfilme),
+    CONSTRAINT codfk FOREIGN KEY (codator) REFERENCES ator(cod),
+    CONSTRAINT estrelapk PRIMARY KEY (numfilme, codator)
+);
+
+CREATE TABLE emprestimo (
+    numfilme    smallint    NOT NULL,
+    numero        smallint    NOT NULL,
+    tipo        varchar(10)    NOT NULL,
+    cliente        smallint    NOT NULL,
+    dataret        timestamp,
+    datadev        timestamp,
+    valor_pg    float,
+    CONSTRAINT    emppk PRIMARY KEY (numfilme, numero, tipo, cliente),
+    CONSTRAINT numfk FOREIGN KEY (numfilme, numero, tipo) REFERENCES midia(numfilme, numero, tipo ),
+    CONSTRAINT clifk FOREIGN KEY (cliente) REFERENCES cliente(numcliente)
+);
+
+---2º script---
+
+ALTER TABLE emprestimo DROP CONSTRAINT emppk;
+ALTER TABLE emprestimo DROP CONSTRAINT numfk ;
+ALTER TABLE emprestimo DROP CONSTRAINT clifk;
+
+ALTER TABLE ator DROP CONSTRAINT ator_pkey;
+
+ALTER TABLE filme DROP CONSTRAINT filme_pkey;
+ALTER TABLE filme DROP CONSTRAINT clafk;
+
+ALTER TABLE cliente DROP CONSTRAINT cliente_pkey;
+
+ALTER TABLE classificacao DROP CONSTRAINT classificacao_pkey;
+
+ALTER TABLE midia DROP CONSTRAINT pk;
+ALTER TABLE midia DROP CONSTRAINT numfk;
+
+ALTER TABLE estrela DROP CONSTRAINT estrelapk;
+ALTER TABLE estrela DROP CONSTRAINT numfk;
+ALTER TABLE estrela DROP CONSTRAINT codfk;
+
+---3º script---
+
+ALTER TABLE emprestimo ADD CONSTRAINT emppk PRIMARY KEY (numfilme, numero, tipo, cliente);
+ALTER TABLE emprestimo ADD CONSTRAINT numfk FOREIGN KEY (numfilme, numero, tipo) REFERENCES midia(numfilme, numero, tipo );
+ALTER TABLE emprestimo ADD CONSTRAINT clifk FOREIGN KEY (cliente) REFERENCES cliente(numcliente);
+
+ALTER TABLE ator ADD CONSTRAINT ator_pkey PRIMARY KEY (cod);
+
+ALTER TABLE filme ADD CONSTRAINT filme_pkey PRIMARY KEY (numfilme);
+ALTER TABLE filme ADD CONSTRAINT clafk FOREIGN KEY (classificacao) REFERENCES classificacao(cod);
+
+ALTER TABLE cliente ADD CONSTRAINT cliente_pkey PRIMARY KEY (numcliente);
+
+ALTER TABLE classificacao ADD CONSTRAINT classificacao_pkey PRIMARY KEY (cod);
+
+ALTER TABLE midia ADD CONSTRAINT pk PRIMARY KEY (numfilme, numero, tipo);
+ALTER TABLE midia ADD CONSTRAINT numfk FOREIGN KEY (numfilme) REFERENCES filme(numfilme);
+
+ALTER TABLE estrela ADD CONSTRAINT estrelapk PRIMARY KEY (numfilme, codator);
+ALTER TABLE estrela ADD CONSTRAINT numfk FOREIGN KEY (numfilme) REFERENCES filme(numfilme);
+ALTER TABLE estrela ADD CONSTRAINT codfk FOREIGN KEY (codator) REFERENCES ator(cod);
+
+--- Exercício nro 4 ----
+
+---Teste nro 1: restrição de integridade de entidade e unicidade de chave ---
+INSERT INTO cliente (numcliente, nome, endereco, foneres) VALUES (1, 'Aline', 'Rua 123, nro 1', '3232-7122');
+INSERT INTO cliente (numcliente, nome, endereco, foneres, fonecel) VALUES (1, 'David', 'Rua 321, nro 2', '3232-0000', '9999-0000');
+
+SELECT * FROM cliente;
+
+-- Neste primeiro teste foi possível incluir dois valores repetidos para o campo numcliente, que a princípio era chave,
+--mas deixou de ser após execução do script 2. Testamos também a inserção de chave nula, porém não possível, pois no script
+--1 além de colcarmos numcliente como chave, colocamos a restrição de NOT NULL (que não foi retirado no script 2).
+
+--Teste nro 2: restrição de integridade referencial ---
+
+INSERT INTO midia (numfilme, numero, tipo) VALUES (100, 001, 'DVD');
+
+SELECT * FROM midia;
+
+--No segundo teste conseguimos incluir um número qualquer para numfilme, que a princípio fazia referencia ao numfilme
+--da tabela cliente, esta referencia (fk) foi retirada no script 2.
+
+-- Ao executar o script 3 para incluir a chave primária cliente_pkey na tabela cliente apareceu uma mensagem de erro
+-- informando que havia uma chave duplicada (conforme criamos no teste nro 1). Excluímos uma das linhas (conforme abaixo)
+-- com isto conseguimos incluir a chave primária cliente_pkey na tablea cliente.
+
+DELETE FROM cliente WHERE foneres = '3232-0000';
+SELECT * FROM cliente; --apenas para conferência
+
+-- Ao executar o script 3 para tentar inserir a foreign key numfk na tabela midia, retornou um erro, pois haviamos incluído um 
+-- numfilme inexistente na tabela filme. Ao executar o script abaixo conseguimos voltar a configuração do fk.
+
+DELETE FROM midia WHERE numfilme = '100';
+SELECT * FROM midia; --apenas para conferência

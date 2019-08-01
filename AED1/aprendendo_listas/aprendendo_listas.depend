@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1493335948 source:c:\users\gabriel\desktop\programaçao\aprendendo_listas\listasequencial.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+
+1493335948 c:\users\gabriel\desktop\programaçao\aprendendo_listas\listasequencial.h
+
+1493333433 source:c:\users\gabriel\desktop\programaçao\aprendendo_listas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+

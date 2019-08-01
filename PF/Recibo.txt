@@ -1,0 +1,7 @@
+("Oleo DoBom, 1l",195)
+("Arroz DoBom, 5Kg",213)
+("Queijo Mineirim, 1Kg",449)
+("Rapadura QuebraDente, 1Kg",80)
+("Cafe DoBom, 1Kg",285)
+("Sorvete QGelo, 1l",695)
+("Oleo DoBom, 1l",195)

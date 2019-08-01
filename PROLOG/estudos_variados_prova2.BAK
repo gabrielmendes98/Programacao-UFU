@@ -1,0 +1,20 @@
+% Autor:
+% Data: 29/06/2017
+
+dados(um).
+dados(dois).
+dados(tres).
+
+cut_teste_a(X) :-
+  dados(X).
+cut_teste_a('ultima_clausula').
+
+n(1).
+n(2).
+n(3).
+
+teste :-
+    n(X),
+    write(X),nl,
+    fail.
+teste.

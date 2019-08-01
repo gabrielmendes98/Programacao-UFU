@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1553000611 source:c:\users\gabriel\desktop\pastas\programacao-ufu\aed2\pratica00-ex2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

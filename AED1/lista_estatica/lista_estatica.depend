@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1494904297 source:c:\users\gabriel\desktop\programaçao\lista_estatica\main.c
+	<sys/time.h>
+	<stdio.h>
+	<stdlib.h>
+

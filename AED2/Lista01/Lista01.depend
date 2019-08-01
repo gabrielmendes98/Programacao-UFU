@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1554809045 source:c:\users\gabriel\desktop\pastas\programacao-ufu\aed2\lista01\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1554208570 source:c:\users\gabriel\desktop\pastas\programacao-ufu\aed2\lista01\ex2.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

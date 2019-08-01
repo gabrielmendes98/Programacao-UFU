@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1499275837 source:c:\users\gabriel\desktop\programaçao\tad_fila_estatica\main.c
+	<stdio.h>
+	<stdlib.h>
+

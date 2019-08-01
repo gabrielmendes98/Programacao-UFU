@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1496326001 source:c:\users\gabriel\desktop\programaçao\aed1_ap7\main.c
+	<stdio.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"pilha.h"
+
+1496326896 c:\users\gabriel\desktop\programaçao\aed1_ap7\pilha.h
+	<stdio.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+
+1496326739 source:c:\users\gabriel\desktop\programaçao\aed1_ap7\pilha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pilha.h"
+
+1496326896 source:c:\users\gabriel\desktop\programaçao\aed1_ap7\transforma.c
+	<stdio.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	"pilha.h"
+

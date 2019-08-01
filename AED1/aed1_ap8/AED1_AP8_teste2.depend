@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1497396157 source:c:\users\gabriel\desktop\programaçao\aed1_ap8_teste2\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+

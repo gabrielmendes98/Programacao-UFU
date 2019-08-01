@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define max 5
+
+int fib(int n){
+    if(n == 0)
+        return 0;
+    if(n == 1)
+        return 1;
+    return fib(n-1)+fib(n-2);
+}
+
+int fibIter(int n){
+    int i,a,b,aux=0;
+    a=0;
+    b=1;
+
+    if(n==0)
+        return 0;
+    if(n==1)
+        return 1;
+
+    for(i=1;i<n;i++){
+        aux=a+b;
+        a=b;
+        b=aux;
+    }
+    return aux;
+}
+
+int recorrencia(int n){
+    if(n == 0)
+        return 1;
+    return (2/n)*(recorrencia(n-1)+n);
+}
+
+int main()
+{
+    int x=recorrencia(2);
+    printf("%d\n",x);
+
+    return 0;
+}

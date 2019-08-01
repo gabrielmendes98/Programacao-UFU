@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1499986966 source:c:\users\gabriel\desktop\programaçao\fila_de_jogadores\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+
