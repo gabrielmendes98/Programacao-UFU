@@ -7,6 +7,15 @@ import numpy as np
 import math
 import statistics as st
 
+tec = 0
+tecRelogio = 1
+ts = 2
+tsRelogio = 3
+tempoFila = 4
+tempoFinalServico = 5
+tempoClienteSistema = 6
+tempoLivreOperador = 7
+
 '''
   Descricao:  Uma funcao simples para gerar numeros aleatorios.
   Recebe:     lower bound, upper bound, media e a distribuicao de probabilidade.
@@ -31,37 +40,37 @@ def geraMatriz(a, b, media, clientes, carac, distProb):
     tabelaSimulacao = [[0 for i in range(8)] for j in range(clientes)]
     for cliente in range(clientes):
         if carac == "aleatorio":  # Usa uma roleta para gerar o tempo aleatorio.
-            tabelaSimulacao[cliente][0] = roleta(a, b, media, distProb)  # Tempo desde a ultima chegada (TEC)
+            tabelaSimulacao[cliente][tec] = roleta(a, b, media, distProb)  # Tempo desde a ultima chegada (TEC)
         elif carac == "deterministico":  # Passado no inicio da simulacao
-            tabelaSimulacao[cliente][0] = a  # Tempo desde a ultima chegada (TEC)
+            tabelaSimulacao[cliente][tec] = a  # Tempo desde a ultima chegada (TEC)
 
         if cliente == 0:  # primeiro cliente
-            tabelaSimulacao[cliente][1] = tabelaSimulacao[cliente][0]  # Tempo de chegada no relogio (TECRelogio)
-            tabelaSimulacao[cliente][3] = tabelaSimulacao[cliente][1]  # Tempo de inicio do servico no relogio (TSRelogio)
-            tabelaSimulacao[cliente][7] = tabelaSimulacao[cliente][1]  # Tempo livre do operador
+            tabelaSimulacao[cliente][tecRelogio] = tabelaSimulacao[cliente][tec]  # Tempo de chegada no relogio (TECRelogio)
+            tabelaSimulacao[cliente][tsRelogio] = tabelaSimulacao[cliente][tecRelogio]  # Tempo de inicio do servico no relogio (TSRelogio)
+            tabelaSimulacao[cliente][tempoLivreOperador] = tabelaSimulacao[cliente][tecRelogio]  # Tempo livre do operador
         else:  # demais clientes
-            tabelaSimulacao[cliente][1] = tabelaSimulacao[cliente][0] + tabelaSimulacao[cliente - 1][1]  # TECRelogio
+            tabelaSimulacao[cliente][tecRelogio] = tabelaSimulacao[cliente][tec] + tabelaSimulacao[cliente - 1][tecRelogio]  # TECRelogio
             # Se um cliente chegou depois que o cliente anterior foi atendido, o seu Tempo de Inicio sera igual seu
-            # Tempo de Chegada
-            if tabelaSimulacao[cliente][1] >= tabelaSimulacao[cliente - 1][5]:
-                tabelaSimulacao[cliente][3] = tabelaSimulacao[cliente][1]
-            else: # Senao, seu tempo de inicio sera o mesmo que o Tempo Final de Servico do outro cliente (assim que
-               # um saiu, o outro eh atendido)
-                tabelaSimulacao[cliente][3] = tabelaSimulacao[cliente - 1][5]  # Tempo de inicio do servico no relogio
-            tabelaSimulacao[cliente][7] = tabelaSimulacao[cliente][3] - tabelaSimulacao[cliente - 1][
-                5]  # Tempo livre do operador eh o tempo de inicio do cliente atual menos o tempo final do anterior
+            # tempo de Chegada
+            if tabelaSimulacao[cliente][tecRelogio] >= tabelaSimulacao[cliente - 1][tempoFinalServico]:
+                tabelaSimulacao[cliente][tsRelogio] = tabelaSimulacao[cliente][tecRelogio]
+            else:  # Senao, seu tempo de inicio sera o mesmo que o Tempo Final de Servico do outro cliente (assim que
+                   # um saiu, o outro eh atendido)
+                tabelaSimulacao[cliente][tsRelogio] = tabelaSimulacao[cliente - 1][tempoFinalServico]  # Tempo de inicio do servico no relogio
+            tabelaSimulacao[cliente][tempoLivreOperador] = tabelaSimulacao[cliente][tsRelogio] - tabelaSimulacao[cliente - 1][
+                tempoFinalServico]  # Tempo livre do operador eh o tempo de inicio do cliente atual menos o tempo final do anterior
 
         if carac == "aleatorio":
-            tabelaSimulacao[cliente][2] = roleta(a, b, media, distProb)  # Tempo do servico aleatorio
+            tabelaSimulacao[cliente][ts] = roleta(a, b, media, distProb)  # Tempo do servico aleatorio
         elif carac == "deterministico":
-            tabelaSimulacao[cliente][2] = b  # Tempo do servico passado por parametro (ts)
+            tabelaSimulacao[cliente][ts] = b  # Tempo do servico passado por parametro (ts)
 
-        tabelaSimulacao[cliente][4] = tabelaSimulacao[cliente][3] - tabelaSimulacao[cliente][
-            1]  # Tempo do cliente na fila
-        tabelaSimulacao[cliente][5] = tabelaSimulacao[cliente][2] + tabelaSimulacao[cliente][
-            3]  # Tempo final do servico no relogio
-        tabelaSimulacao[cliente][6] = tabelaSimulacao[cliente][5] - tabelaSimulacao[cliente][
-            1]  # Tempo do cliente no sistema
+        tabelaSimulacao[cliente][tempoFila] = tabelaSimulacao[cliente][tsRelogio] - tabelaSimulacao[cliente][
+            tecRelogio]  # Tempo do cliente na fila
+        tabelaSimulacao[cliente][tempoFinalServico] = tabelaSimulacao[cliente][ts] + tabelaSimulacao[cliente][
+            tsRelogio]  # Tempo final do servico no relogio
+        tabelaSimulacao[cliente][tempoClienteSistema] = tabelaSimulacao[cliente][tempoFinalServico] - tabelaSimulacao[cliente][
+            tecRelogio]  # Tempo do cliente no sistema
         # print(tabelaSimulacao[cliente])
 
     return tabelaSimulacao
@@ -74,19 +83,19 @@ def geraMatriz(a, b, media, clientes, carac, distProb):
               livre, tempo medio de servico por cliente, tempo medio despendido no sistema.
 '''
 def geraEstatisticas(tabelaSimulacao):
-    tempoEsperaFila, nroClientesEspera, tempoLivreOperador, tempoServico, tempoNoSistema = 0, 0, 0, 0, 0
+    tempoEsperaFila, nroClientesEspera, tLivreOperador, tempoServico, tempoNoSistema = 0, 0, 0, 0, 0
     nroClientes = len(tabelaSimulacao)
     for i in range(nroClientes):
-        tempoEsperaFila += tabelaSimulacao[i][4]
-        tempoLivreOperador += tabelaSimulacao[i][7]
-        tempoServico += tabelaSimulacao[i][2]
-        tempoNoSistema += tabelaSimulacao[i][6]
-        if tabelaSimulacao[i][4] > 0:
+        tempoEsperaFila += tabelaSimulacao[i][tempoFila]
+        tLivreOperador += tabelaSimulacao[i][tempoLivreOperador]
+        tempoServico += tabelaSimulacao[i][ts]
+        tempoNoSistema += tabelaSimulacao[i][tempoClienteSistema]
+        if tabelaSimulacao[i][tempoFila] > 0:
             nroClientesEspera += 1
 
     tempoMedioEsperaFila = tempoEsperaFila / nroClientes
     probClienteFila = nroClientesEspera / nroClientes
-    probOperadorLivre = tempoLivreOperador / tabelaSimulacao[nroClientes - 1][5]
+    probOperadorLivre = tLivreOperador / tabelaSimulacao[nroClientes - 1][tempoFinalServico]
     tempoMedioServico = tempoServico / nroClientes
     tempoMedioDespendido = tempoNoSistema / nroClientes
 
